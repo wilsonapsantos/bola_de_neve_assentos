@@ -1,0 +1,48 @@
+.box-content {
+    display: -webkit-box;
+    text-align: center;
+    border: 1px groove;
+    width: 90%;
+    padding-left: 1rem;
+    overflow: auto;
+    margin: auto;
+    -webkit-box-pack: center;
+}
+
+.column {
+    width: 220px;
+}
+
+.row {
+    display: inline-flex
+}
+
+.row-number{
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.seats-row {
+    display: flex;
+    margin: auto;
+}
+
+.seat {
+    width: 15px;
+    border: 1px groove;
+    display: inline-table;
+    margin: 0px 2px 2px;    
+    color: #fff;
+}
+
+.seat-available{
+    background: green;
+}
+
+.seat-unavailable{
+    background: gray;
+}
+
+.seat-name{
+    font-size: 10px;
+}
