@@ -14,7 +14,6 @@ function verifyJWT(req, res, next) {
     })
 }
 
-
 //Initial route
 routes.get('/', (req, res) => {
     res.json({ message: "Tudo certo por aqui!" });

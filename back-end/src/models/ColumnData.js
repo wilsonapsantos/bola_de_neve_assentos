@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const ColumnData = new mongoose.Schema({
     columnName: String,
-    amountRow: Number,
-    seat: [
-        {
-            id: String,
+    rows: [{
+        rowNumber: Number,
+        seats: [{
             number: Number,
             filled: Boolean
-        }
+        }]
+    }
     ]
 })
 

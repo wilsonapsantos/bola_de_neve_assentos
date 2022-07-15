@@ -2,8 +2,8 @@ const Column = require('../models/ColumnData');
 
 module.exports = {
     async create(req, res) {
-
-        console.log(req.body);
+        
+        await Column.remove({});
 
         const options = { ordered: true };
         Column.insertMany(req.body, options).then(() => {

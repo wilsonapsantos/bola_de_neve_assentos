@@ -1,36 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Seat from '../../Components/Seat';
+import api from "../../Services/api";
+import "./style.css";
 
 function Registration() {
 
-    const [columns, setColumns] = useState([]);
+    const [columns, setColumns] = useState(null);
+
+    //const token = process.env.REACT_APP_TOKEN;
+    const headers = {
+        //'ApiKey': token,
+    };
 
     function handleCreateColumn() {
-        let column = document.getElementById("column").value;
+        let columnName = document.getElementById("column").value;
         let row = document.getElementById("row").value;
         let chair = document.getElementById("chair").value;
 
         var rows = [];
-        var seatsRow = [];
-        for (var i = 0; i < row; i++) {
-            rows.push(i + 1);
+        for (var r = 0; r < row; r++) {
+            var seats = [];
+            for (var s = 0; s < chair; s++) {
+                seats.push({ "number": s + 1, "filled": false });
+            }
+            rows.push({ "rowNumber": r + 1, seats });
         }
 
-        for (var s = 0; s < chair; s++) {
-            seatsRow.push(s + 1);
-        }
+        const registration = { columnName: columnName, rows: rows };
 
-        const registration = { column: column, row: rows, chair: seatsRow };
-        setColumns([...columns, registration]);
+        if (columns)
+            setColumns([...columns, registration]);
+        else
+            setColumns([registration]);
     }
 
-    function handleSave() {
-        console.log(columns);
+    async function handleSave() {
+        await api
+            .post("Columns", columns, { headers })
+            .then((response) => {
+                if (response.status === 200) {
+                    if (response.data) {
+                        setColumns(null);
+                    }
+                }
+                else {
+                    console.log("Erro na requisição");
+                }
+            })
     }
 
     return (
@@ -41,21 +62,21 @@ function Registration() {
             <Divider />
             <Box
                 component="form"
-                sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                }}
                 noValidate
                 autoComplete="off"
+                className='form-create'
             >
-                <TextField id="column" type={"text"} label="Coluna" variant="outlined" />
-                <TextField id="row" type={"number"} label="Fileiras" variant="outlined" />
-                <TextField id="chair" type={"number"} label="Cadeiras" variant="outlined" />
-                <Button style={{ width: "15ch" }} variant="contained" onClick={handleCreateColumn}>Adicionar</Button>
+                <TextField className='content-form' id="column" type={"text"} label="Coluna" variant="outlined" />
+                <TextField className='content-form' id="row" type={"number"} label="Fileiras" variant="outlined" />
+                <TextField className='content-form' id="chair" type={"number"} label="Cadeiras" variant="outlined" />
             </Box>
             <Box>
-                <Button style={{ width: "15ch" }} variant="contained" onClick={handleSave}>Salvar</Button>
+                <Button className='btn-form' variant="contained" onClick={handleCreateColumn}>Adicionar</Button>
+                <Button className='btn-form' variant="contained" disabled={columns ? false : true} onClick={handleSave}>Salvar</Button>
             </Box>
-            <Seat columns={columns} />
+            {columns &&
+                <Seat columns={columns} />
+            }
         </Box >
     );
 }

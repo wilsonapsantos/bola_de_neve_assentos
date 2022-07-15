@@ -1,0 +1,15 @@
+
+.btn-form {
+    width: 15ch !important;
+    margin: 1rem 1rem 1rem !important;
+}
+
+.content-form {
+    margin: 1rem !important;
+    width: 25ch;
+}
+
+.form-create {
+    display: flex;
+    justify-content: center;
+}

@@ -26,19 +26,19 @@ export default function Seat({ columns }) {
 
     return (
         <div className='box-content'>
-            {columns && columns.map((item, index) =>
-                <div key={index} className="column">
-                    <p><b>{item.column}</b></p>
-                    {item.row.map((x, i) =>
-                        <div key={i} className="row">
-                            {index === 0 &&
-                                <b><p className='row-number'>{x < 10 ? "0" + x : x}</p></b>
+            {columns && columns.map((column, columnIndex) =>
+                <div key={columnIndex} className="column">
+                    <p><b>{column.columnName}</b></p>
+                    {column.rows.map((row, rowIndex) =>
+                        <div key={rowIndex} className="row">
+                            {columnIndex === 0 &&
+                                <b><p className='row-number'>{row.rowNumber < 10 ? "0" + row.rowNumber : row.rowNumber}</p></b>
                             }
                             <div className='seats-row'>
-                                {item.chair && item.chair.map((seat, seatIndex) =>
-                                    <div key={seatIndex} className='seat seat-available'
-                                        onClick={() => handleSetSeat(item.column + "-" + x + "-" + seat)}>
-                                        <p className='seat-name'>{seat}</p>
+                                {row.seats && row.seats.map((seat, seatIndex) =>
+                                    <div key={seatIndex} className={seat.filled ? 'seat seat-unavailable' : 'seat seat-available'}
+                                        onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)}>
+                                        <p className='seat-name'>{seat.number}</p>
                                     </div>
                                 )}
                             </div>

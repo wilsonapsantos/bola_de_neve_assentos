@@ -37,7 +37,7 @@ const ResponsiveAppBar = (props) => {
     };
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    let initialName = "";
+    let initialName = "W";
     let userName = localStorage.getItem('userName');
     if (userName) {
         initialName = userName.substring(0, 1)
