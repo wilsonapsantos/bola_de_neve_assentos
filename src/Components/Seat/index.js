@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import "./style.css"
 
-export default function Seat({ columns }) {
+export default function Seat({ columns, changeSeat }) {
 
-    const [listColumns, setListColumns] = useState(null);
+    const [listColumns, setListColumns] = useState([]);
 
     useEffect(() => {
         setListColumns(columns);
-    }, []);
+    }, [columns]);
 
     const handleSetSeat = (id) => {
-
-        // let split = id.split('-');
-
-        // let newListColumns = listColumns;
-
-        // for (var a in newListColumns) {
-        //     if (a.column == split[0]) {
-        //         for(var b in a.)
-        //     }
-        // }
-
-        console.log(id);
+        changeSeat(id);
     };
 
     return (
         <div className='box-content'>
-            {columns && columns.map((column, columnIndex) =>
+            {listColumns && listColumns.map((column, columnIndex) =>
                 <div key={columnIndex} className="column">
                     <p><b>{column.columnName}</b></p>
                     {column.rows.map((row, rowIndex) =>

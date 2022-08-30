@@ -7,14 +7,16 @@
     overflow: auto;
     margin: auto;
     -webkit-box-pack: center;
+    margin-bottom: 1rem;
 }
 
 .column {
     width: 220px;
+    margin-bottom: 2rem;
 }
 
 .row {
-    display: inline-flex
+    display: flex
 }
 
 .row-number{

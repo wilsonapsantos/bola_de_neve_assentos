@@ -13,7 +13,7 @@ function App() {
     if (token) {
       setAuth(true);
     }
-  })
+  }, [])
 
   return (
     <div className="App">
