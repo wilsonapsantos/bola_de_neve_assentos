@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
 import api from "../../Services/api";
+import "./style.css";
 
 function Home() {
 
@@ -71,16 +72,16 @@ function Home() {
   }
 
   return (
-    <Box className="App" sx={{ width: '100%', marginTop: "20px" }}>
-      <Box style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-        <Typography variant="h6" component="div" gutterBottom style={{ alignSelf: "center", marginBottom: "initial" }}>
+    <Box className="App box-home">
+      <Box className='box-legenda'>
+        <Typography variant="h6" component="div" gutterBottom className='text-legenda'>
           Legenda:
         </Typography>
-        <div style={{ display: "grid", justifyItems: "center", width: "100px" }}>
+        <div className='seat-legenda'>
           <EventSeatIcon color='success' />
           Disponível
         </div>
-        <div style={{ display: "grid", justifyItems: "center", width: "100px" }}>
+        <div className='seat-legenda'>
           <EventSeatIcon color='disabled' />
           Oculpado
         </div>

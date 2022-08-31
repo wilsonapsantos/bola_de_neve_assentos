@@ -1,0 +1,21 @@
+.box-home {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.box-legenda {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.text-legenda {
+    align-self: center;
+    margin-bottom: initial;
+}
+
+.seat-legenda {
+    display: grid;
+    justify-items: center;
+    width: 100px;
+}
