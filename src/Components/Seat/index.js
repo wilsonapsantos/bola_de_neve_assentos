@@ -26,9 +26,8 @@ export default function Seat({ columns, changeSeat }) {
                             }
                             <div className='seats-row'>
                                 {row.seats && row.seats.map((seat, seatIndex) =>
-                                    <div>
-                                        <EventSeatIcon color={seat.filled ? 'disabled' : 'success'}
-                                            onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)} />
+                                    <div onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)}>
+                                        <EventSeatIcon color={seat.filled ? 'disabled' : 'success'} />
                                         <p className='seat-name-event'>{seat.number}</p>
                                     </div>
                                 )}
