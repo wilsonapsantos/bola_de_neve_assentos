@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import EventSeatIcon from '@mui/icons-material/EventSeat';
 import "./style.css"
 
 export default function Seat({ columns, changeSeat }) {
@@ -25,9 +26,10 @@ export default function Seat({ columns, changeSeat }) {
                             }
                             <div className='seats-row'>
                                 {row.seats && row.seats.map((seat, seatIndex) =>
-                                    <div key={seatIndex} className={seat.filled ? 'seat seat-unavailable' : 'seat seat-available'}
-                                        onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)}>
-                                        <p className='seat-name'>{seat.number}</p>
+                                    <div>
+                                        <EventSeatIcon color={seat.filled ? 'disabled' : 'success'}
+                                            onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)} />
+                                        <p className='seat-name-event'>{seat.number}</p>
                                     </div>
                                 )}
                             </div>
