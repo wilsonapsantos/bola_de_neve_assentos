@@ -10,7 +10,7 @@
     margin-bottom: 1rem;
 }
 
-.column {    
+.column {
     margin-bottom: 2rem;
     padding: 1rem;
 }
@@ -19,7 +19,7 @@
     display: flex
 }
 
-.row-number{
+.row-number {
     font-size: 10px;
     margin-right: 10px;
 }
@@ -33,31 +33,35 @@
     width: 15px;
     border: 1px groove;
     display: inline-table;
-    margin: 0px 2px 2px;    
+    margin: 0px 2px 2px;
     color: #fff;
 }
 
-.seat-available{
+.seat-available {
     background: green;
 }
 
-.seat-unavailable{
+.seat-unavailable {
     background: gray;
 }
 
-.seat-name{
+.seat-name {
     font-size: 10px;
 }
 
-.seat-name-event{
+.seat-name-event {
     font-size: 10px;
     margin-top: -10px;
 }
 
-.row-first{
+.row-first {
     rotate: 10deg;
 }
 
-.row-last{
+.row-last {
     rotate: -10deg;
+}
+
+.column-margin-top {
+    margin-top: 31px;
 }
