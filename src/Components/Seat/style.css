@@ -7,6 +7,7 @@
     margin: auto;
     -webkit-box-pack: center;
     margin-bottom: 1rem;
+    height: 65vh;
 }
 
 .column {
