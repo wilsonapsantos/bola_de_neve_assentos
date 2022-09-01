@@ -3,7 +3,6 @@
     text-align: center;
     border: 1px groove;
     width: 90%;
-    padding-left: 1rem;
     overflow: auto;
     margin: auto;
     -webkit-box-pack: center;
@@ -19,8 +18,16 @@
     display: flex
 }
 
-.row-number {
+.row-number-right,
+.row-number-left {
     font-size: 10px;
+}
+
+.row-number-right {
+    margin-left: 10px;
+}
+
+.row-number-left {
     margin-right: 10px;
 }
 

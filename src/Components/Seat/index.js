@@ -23,7 +23,7 @@ export default function Seat({ columns, changeSeat }) {
                         {column.rows.map((row, rowIndex) =>
                             < div key={rowIndex} className={columnIndex === 0 ? "row row-first" : columnIndex === listColumns.length - 1 ? "row row-last" : "row"}>
                                 {columnIndex === 0 &&
-                                    <b><p className='row-number'>{row.rowNumber < 10 ? "0" + row.rowNumber : row.rowNumber}</p></b>
+                                    <b><p className='row-number-left'>{row.rowNumber < 10 ? "0" + row.rowNumber : row.rowNumber}</p></b>
                                 }
                                 <div className='seats-row'>
                                     {row.seats && row.seats.map((seat, seatIndex) =>
@@ -35,6 +35,9 @@ export default function Seat({ columns, changeSeat }) {
                                         </div>
                                     )}
                                 </div>
+                                {columnIndex === listColumns.length - 1 &&
+                                    <b><p className='row-number-right'>{row.rowNumber < 10 ? "0" + row.rowNumber : row.rowNumber}</p></b>
+                                }
                             </div>
                         )}
                     </div>
