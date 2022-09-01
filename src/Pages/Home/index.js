@@ -5,10 +5,14 @@ import Typography from '@mui/material/Typography';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
 import api from "../../Services/api";
 import "./style.css";
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Home() {
 
   const [columns, setColumns] = useState(null);
+  const [load, setLoad] = useState(false);
 
   //const token = process.env.REACT_APP_TOKEN;
   const headers = {
@@ -23,6 +27,7 @@ function Home() {
 
 
   async function handleLayoutColumns() {
+    setLoad(true);
     await api
       .get("Columns", { headers })
       .then((response) => {
@@ -35,6 +40,7 @@ function Home() {
           console.log("Erro na requisição");
         }
       })
+    setLoad(false);
   }
 
   async function handleChangeSeat(id) {
@@ -85,6 +91,17 @@ function Home() {
           <EventSeatIcon color='disabled' />
           Oculpado
         </div>
+      </Box>
+      <Box style={{ marginBottom: "1rem" }}>
+        {load ?
+          <Box sx={{ display: 'flex', justifyContent: "center", margin: "1rem" }}>
+            <CircularProgress style={{ color: "#121212" }} size={32} />
+          </Box>
+          :
+          <Button variant="outlined" className='bn-button' startIcon={<AutorenewIcon />} onClick={() => handleLayoutColumns()}>
+            Atualizar
+          </Button>
+        }
       </Box>
       {columns &&
         <Seat columns={columns} changeSeat={handleChangeSeat} />
