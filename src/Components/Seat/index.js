@@ -19,7 +19,7 @@ export default function Seat({ columns, changeSeat }) {
             {listColumns && listColumns.map((column, columnIndex) =>
                 <div key={columnIndex} className="column">
                     <p><b>{column.columnName}</b></p>
-                    <div className={columnIndex !== 0 && columnIndex !== listColumns.length - 1 ? "column-margin-top": ""}>
+                    <div className={columnIndex !== 0 && columnIndex !== listColumns.length - 1 ? "column-margin-top" : ""}>
                         {column.rows.map((row, rowIndex) =>
                             < div key={rowIndex} className={columnIndex === 0 ? "row row-first" : columnIndex === listColumns.length - 1 ? "row row-last" : "row"}>
                                 {columnIndex === 0 &&
@@ -27,8 +27,10 @@ export default function Seat({ columns, changeSeat }) {
                                 }
                                 <div className='seats-row'>
                                     {row.seats && row.seats.map((seat, seatIndex) =>
-                                        <div key={seatIndex} onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)}>
-                                            <EventSeatIcon color={seat.filled ? 'disabled' : 'success'} />
+                                        <div key={seatIndex}
+                                            className={columnIndex === 0 ? "row-first" : columnIndex === listColumns.length - 1 ? "row-last" : ""}>
+                                            <EventSeatIcon color={seat.filled ? 'disabled' : 'success'}
+                                                onClick={() => handleSetSeat(column.columnName + "-" + row.rowNumber + "-" + seat.number)} />
                                             <p className='seat-name-event'>{seat.number}</p>
                                         </div>
                                     )}
